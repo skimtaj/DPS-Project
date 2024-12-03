@@ -124,7 +124,7 @@ app.post('/admin-signup', upload.single('Profile_Image'), async function (req, r
 
 app.get('/admin-login', function (req, res) {
 
-    res.render('../views/admin-login')
+    res.render('../Views/admin-login')
 })
 
 app.post('/admin-login', async function (req, res) {
@@ -173,7 +173,7 @@ app.get('/admin-dashboard', auth, async function (req, res) {
 
     const totalDonator = donator.length;
 
-    res.render('../views/admin_dashboard', { adminSourse, totalDonator })
+    res.render('../Views/admin_dashboard', { adminSourse, totalDonator })
 });
 
 
@@ -182,7 +182,7 @@ app.get('/admin-edit', auth, async function (req, res) {
 
     const adminId = req.adminId;
     const editAdmin = await admin_signup_model.findById(adminId)
-    res.render('../views/edit_admin', { editAdmin });
+    res.render('../Views/edit_admin', { editAdmin });
 })
 
 app.post('/admin-edit', auth, upload.single('Profile_Image'), async function (req, res) {
@@ -211,7 +211,7 @@ app.get('/admin-dashboard/notice', auth, async function (req, res) {
 
 app.get('/admin-dashboard/notice/add-notice', auth, async function (req, res) {
 
-    res.render('../views/notice_form');
+    res.render('../Views/notice_form');
 })
 
 app.post('/admin-dashboard/notice/add-notice', upload.single('Notice_Pdf'), auth, async function (req, res) {
@@ -285,7 +285,7 @@ app.post('/donator-form', upload.single('Profile_Image'), auth, async function (
 app.get('/admin-dashboard/donator', auth, async function (req, res) {
 
     const donatorSource = await donator_model.find();
-    res.render('../views/donator', { donatorSource });
+    res.render('../Views/donator', { donatorSource });
 })
 
 app.get('/donator-reject/:id', async function (req, res) {
@@ -322,14 +322,14 @@ app.get('/donator-reject/:id', async function (req, res) {
 
 app.get('/donator-form', async function (req, res) {
 
-    res.render('../views/donator-signup');
+    res.render('../Views/donator-signup');
 })
 
 
 app.get('/donator-login', async function (req, res) {
 
 
-    res.render('../views/donator-login');
+    res.render('../Views/donator-login');
 })
 
 
@@ -373,7 +373,7 @@ app.post('/donator-login', async function (req, res) {
     }
 
 
-    res.render('../views/donator-login');
+    res.render('../Views/donator-login');
 })
 
 app.get('/donator-dashboard', authen, async function (req, res) {
@@ -382,14 +382,14 @@ app.get('/donator-dashboard', authen, async function (req, res) {
     const donatorSource = await donator_model.findById(donatorID).populate('Payment');
     const notice = await notice_model.find();
 
-    res.render('../views/donator-dashboard', { donatorSource, notice });
+    res.render('../Views/donator-dashboard', { donatorSource, notice });
 });
 
 app.get('/edit-donator', authen, async function (req, res) {
 
     const donatorID = req.donatorId;
     const donatorSource = await donator_model.findById(donatorID)
-    res.render('../views/edit-donator', { donatorSource });
+    res.render('../Views/edit-donator', { donatorSource });
 });
 
 app.post('/edit-donator', upload.single('Profile_Image'), authen, async function (req, res) {
@@ -416,7 +416,7 @@ app.get('/donator-dashboard/donate-form', authen, async function (req, res) {
     const donatorID = req.donatorId;
     const donatorSource = await donator_model.findById(donatorID)
 
-    res.render('../views/donate-form', { donatorSource });
+    res.render('../Views/donate-form', { donatorSource });
 });
 
 app.post('/donator-dashboard/donate-form', upload.single('Payment_Proof'), authen, async function (req, res) {
@@ -502,7 +502,7 @@ app.get('/donator-dashboard/donator/payment-report/:id', auth, async function (r
 app.get('/forget-password', function (req, res) {
 
 
-    res.render('../views/forget-password-email')
+    res.render('../Views/forget-password-email')
 })
 
 app.post('/forget-password', async function (req, res) {
@@ -550,7 +550,7 @@ app.post('/forget-password', async function (req, res) {
 
 app.get('/reset-password/:id', function (req, res) {
 
-    res.render('../views/reset-password')
+    res.render('../Views/reset-password')
 });
 
 app.post('/reset-password/:id', async function (req, res) {
