@@ -83,7 +83,7 @@ const authen = (req, res, next) => {
 
 
 app.get('/admin-signup', function (req, res) {
-    res.render('../views/admin-signup')
+    res.render('../Views/admin-signup')
 })
 
 app.post('/admin-signup', upload.single('Profile_Image'), async function (req, res) {
